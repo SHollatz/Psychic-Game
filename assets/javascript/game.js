@@ -8,6 +8,9 @@ var wins = document.getElementById('wins');
 var losses = document.getElementById('losses');
 var leftGuesses = document.getElementById('leftGuesses');
 var value = document.getElementById('doneGuesses');
+var winSound = new Audio("assets/sounds/NFF-yahoo.wav");
+var loseSound = new Audio("assets/sounds/NFF-dirt-hit.wav");
+
 
 wins.textContent = numWins;
 losses.textContent = numLosses;
@@ -25,7 +28,6 @@ function reset() {
     orgLetter = letters[Math.floor(Math.random() * letters.length)];
 }
 
-
 document.onkeyup = function(KeyboardEvent) {
     var userGuess = KeyboardEvent.key.toLowerCase();
     if (!guessedLetters.includes(userGuess)) {
@@ -37,12 +39,14 @@ document.onkeyup = function(KeyboardEvent) {
             doneGuesses.textContent = guessedLetters;
         }
         if(userGuess === orgLetter) {
+            winSound.play();
             numWins++;
             wins.textContent = numWins;
             reset();
             console.log("orgLetter2: " + orgLetter);
         }
         if (numGuesses === 0) {
+            loseSound.play();
             numLosses++;
             losses.textContent = numLosses;
             reset();
