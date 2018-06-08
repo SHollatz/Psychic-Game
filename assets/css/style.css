@@ -11,11 +11,15 @@ main {
     text-align: center;
     padding-top: 50px;
     color: darkblue;
-    margin: 0 auto 0 20px;
+    margin: 0 auto 100px 20px;
 }
 
 footer {
-    width: 700px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left:0;
+    padding: 0 0 50px 0;
 }
 
 #copyright {
